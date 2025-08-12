@@ -1,10 +1,13 @@
 const express = require('express');
+const DBConnect = require('./utils/db.js');
 const routes = require('./routes/index.js');
 require('dotenv').config();
 
 const server = express();
 server.use(express.json());
 server.use('/', routes);
+
+DBConnect();
 
 const port = process.env.PORT || 4000;
 
