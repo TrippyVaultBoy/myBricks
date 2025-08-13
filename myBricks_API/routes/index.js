@@ -15,5 +15,6 @@ router.post('/login', authController.login);
 router.get('/check', authController.checkToken);
 
 router.post('/add', authMiddleware, collectionController.addSet);
+router.post('/remove', authMiddleware, collectionController.removeSet);
 
 module.exports = router;

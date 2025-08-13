@@ -42,6 +42,29 @@ const collectionController = {
             res.status(500).json({ error: 'Internal server error' });
         }
     },
+
+    async removeSet(req, res) {
+        const { setNum, quantity = 1 } = req.body;
+
+        if (!req.user || !req.user.id) return res.status(401).json({ error: 'Unauthorized' });
+
+        const userId = req.user.id;
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        
+        const existingSetIndex = user.setCollection.findIndex(s => s.setNum === setNum);
+        if (existingSetIndex === -1) return res.status(400).json({ error: 'Set not in collection' });
+
+        const existingSet = user.setCollection[existingSetIndex];
+        if (quantity >= existingSet.quantity) {
+            user.setCollection.splice(existingSetIndex, 1);
+        } else {
+            existingSet.quantity -= quantity;
+        }
+
+        await user.save();
+        return res.status(200).json({ message: 'Set updated', setCollection: user.setCollection });
+    }
 }
 
 module.exports = collectionController;
