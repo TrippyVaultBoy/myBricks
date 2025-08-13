@@ -7,7 +7,12 @@ const userSchema = new mongoose.Schema({
     setCollection: [{
         setNum: { type: String, required: true },
         quantity: { type: Number, required: true, default: 1 },
-        addedAt: { type: Date, default: Date.now }
+        addedAt: { type: Date, default: Date.now },
+        name: { type: String, required: true },
+        themeId: { type: Number, required: true },
+        year: { type: Number, required: true },
+        numParts: { type: Number, required: true },
+        setImgUrl: { type: String, required: true },
     }]
 }, { collection: 'users' });
 
