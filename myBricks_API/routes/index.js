@@ -3,6 +3,7 @@ const express = require('express');
 const usersController = require('../controllers/usersController.js');
 const authController = require('../controllers/authController.js');
 const collectionController = require('../controllers/collectionController.js');
+const statsController = require('../controllers/statsController.js');
 
 const authMiddleware = require('../middleware/authMiddleware.js');
 
@@ -19,6 +20,6 @@ router.get('/check', authController.checkToken);
 router.post('/collection/add', authMiddleware, collectionController.addSet);
 router.post('/collection/remove', authMiddleware, collectionController.removeSet);
 
-// router.get('/stats/parts', authMiddleware, statsController.getPartCount);
+router.get('/stats/parts', authMiddleware, statsController.getPartCount);
 
 module.exports = router;
