@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.js');
 
-const UsersController = {
+const usersController = {
     async postNew(req, res) {
         const { username, email, password } = req.body;
 
@@ -41,4 +41,4 @@ const UsersController = {
     }
 };
 
-module.exports = UsersController;
+module.exports = usersController;
