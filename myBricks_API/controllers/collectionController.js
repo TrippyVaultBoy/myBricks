@@ -16,11 +16,16 @@ const collectionController = {
             const user = await User.findById(userId);
             if (!user) return res.status(404).json({ error: 'User not found' });
 
+            if (!Number.isInteger(quantity) || quantity < 1) {
+                return res.status(400).json({ error: 'Quantity must be a positive integer' })
+            }
+
             // If set already in collection, update quantity
             const existingSet = user.setCollection.find(s => s.setNum === setNum);
             if (existingSet) {
                 existingSet.quantity += quantity;
                 await user.save();
+                console.log(`Quantity of set ${setNum} updated in ${user.userName}'s collection: ${existingSet.quantity}`);
                 return res.status(200).json({ message: `Quantity updated for set ${setNum}`, set: existingSet});
             }
             
@@ -43,6 +48,7 @@ const collectionController = {
                     setImgUrl: setData.set_img_url,
                     lastFetched: new Date(),
                 });
+                console.log(`Cached set ${setNum}`)
             }
             
             // Add set to user's collection
@@ -58,6 +64,7 @@ const collectionController = {
             });
 
             await user.save();
+            console.log(`Set ${setNum} added to ${user.userName}'s collection`);
             return res.status(201).json({ message: `Set ${setNum} added`, set: cachedSet });
         } catch (err) {
             res.status(500).json({ error: 'Internal server error' });
@@ -72,20 +79,27 @@ const collectionController = {
         const userId = req.user.id;
         const user = await User.findById(userId);
         if (!user) return res.status(404).json({ error: 'User not found' });
-        
+       
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            return res.status(400).json({ error: 'Quantity must be a positive integer' })
+        }
+
         const existingSetIndex = user.setCollection.findIndex(s => s.setNum === setNum);
         if (existingSetIndex === -1) return res.status(400).json({ error: 'Set not in collection' });
 
         const existingSet = user.setCollection[existingSetIndex];
         if (quantity >= existingSet.quantity) {
+            console.log(`Set ${setNum} removed from ${user.userName}'s collection`);
             user.setCollection.splice(existingSetIndex, 1);
         } else {
             existingSet.quantity -= quantity;
+            console.log(`Quantity of set ${setNum} updated in ${user.userName}'s collection: ${existingSet.quantity}`);
         }
 
         await user.save();
         return res.status(200).json({ message: 'Set updated', setCollection: user.setCollection });
-    }
+    },
+
 }
 
 module.exports = collectionController;
