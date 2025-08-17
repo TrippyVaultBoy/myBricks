@@ -16,3 +16,12 @@
 [2025-08-17T01:59:31.612Z] GET /collection/40775 Status: 404 - 50ms
 [2025-08-17T02:00:09.579Z] GET /collection/40755-1 Status: 200 - 50ms
 [2025-08-17T02:09:55.475Z] DELETE /collection/40755-1 Status: 200 - 115ms
+[2025-08-17T02:20:35.294Z] PATCH /collection/75401-1 Status: 400 - 4ms
+[2025-08-17T02:20:40.768Z] PATCH /collection/75401-1 Status: 401 - 2ms
+[2025-08-17T02:21:30.065Z] POST /login Status: 200 - 115ms
+[2025-08-17T02:22:35.899Z] PATCH /collection/75401-1 Status: 400 - 2ms
+[2025-08-17T02:22:45.893Z] PATCH /collection/75401-1 Status: 400 - 2ms
+[2025-08-17T02:23:33.865Z] PATCH /collection/75401-1 Status: 401 - 2ms
+[2025-08-17T02:24:10.575Z] PATCH /collection/75401-1 Status: 200 - 103ms
+[2025-08-17T02:24:33.989Z] PATCH /collection/75401-1 Status: 200 - 94ms
+[2025-08-17T02:24:36.577Z] PATCH /collection/75401-1 Status: 200 - 88ms

@@ -94,7 +94,30 @@ const collectionController = {
     },
 
     async updateSet(req, res, next) {
-        
+        try {
+            const { setNum } = req.params;
+            const { quantity } = req.body;
+
+            if (!Number.isInteger(quantity) || quantity < 0) {
+                return res.status(400).json({ error: 'Quantity must be a positive integer' });
+            }
+
+            if (!req.user || !req.user.id) return res.status(401).json({ error: 'Unauthorized' });
+
+            const userId = req.user.id;
+            const user = await User.findById(userId);
+            if (!user) return res.status(404).json({ error: 'User not found' });
+            
+            const setIndex = user.setCollection.findIndex(s => s.setNum === setNum);
+            if (setIndex === -1) return res.status(404).json({ error: 'Set not in collection' });
+
+            user.setCollection[setIndex].quantity = quantity;
+
+            await user.save();
+            return res.status(200).json({ message: 'Set updated successfully', set: user.setCollection[setIndex] });
+        } catch (err) {
+            next(err);
+        }
     },
 
     async getCollection(req, res) {
