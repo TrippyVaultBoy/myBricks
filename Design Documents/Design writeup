@@ -1,0 +1,21 @@
+* What is it your are going to build
+
+    I am going to build a simple LEGO collection organizer. It will include routes to add, delete, update sets in a users collection. I will also include a login and authentication system to keep collections secure and tamper free. To reduce calls to the LEGO api that im getting set information from I will implement a cache of sets. A logger with keep record of all requests to the API as well as all unexpected errors.
+
+* What tools will you use?
+
+    Tools I'll use:
+    Documentation - Swagger.js
+    API Framework - Express.js
+    Database/Caching - MongoDB Atlas + mongoose
+    Authentication - JSON Web Tokens
+    Logger - Custom Logger
+
+* How long do you expect to spend on development of each part?
+
+    Basic Project Outline - 1 Day
+    Database and Model setup - 2 Days
+    UserController - 1 Day
+    CollectionController - 2 Days
+    cache setup - 1 Day
+    Extras + finishing touches - 2 Days

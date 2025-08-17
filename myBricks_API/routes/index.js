@@ -13,11 +13,9 @@ router.get('/error', (req, res, next) => {
     throw new Error('test error.');
 });
 
-router.post('/users', usersController.postNew);
-router.get('/users/count', usersController.countUsers);
+router.post('/user', usersController.postNew);
 
 router.post('/login', authController.login);
-router.get('/check', authController.checkToken);
 
 router.get('/collection', authMiddleware, collectionController.getCollection);
 router.get('/collection/:setNum', authMiddleware, collectionController.getSet);

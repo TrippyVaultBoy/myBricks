@@ -25,20 +25,12 @@ const usersController = {
                 password: hashedPassword,
             });
 
-            return res.status(201).json({ id: newUser._id, email: newUser.email });
+            return res.status(201).json({ message: `User ${username} successfully created`, id: newUser._id, email: newUser.email });
         } catch (err) {
             next(err);
         }
     },
 
-    async countUsers(req, res) {
-        try {
-            const count = await User.countDocuments();
-            return res.json({ count });
-        } catch (err) {
-            next(err);
-        }
-    }
 };
 
 module.exports = usersController;

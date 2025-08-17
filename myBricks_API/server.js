@@ -1,5 +1,7 @@
 const express = require('express');
 const DBConnect = require('./utils/db.js');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./utils/swagger.js');
 const requestLogger = require('./middleware/logger.js');
 const errorHandler = require('./middleware/errorHandler.js');
 const routes = require('./routes/index.js');
@@ -10,6 +12,7 @@ server.use(express.json());
 server.use(requestLogger);
 server.use('/', routes);
 server.use(errorHandler);
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 DBConnect();
 

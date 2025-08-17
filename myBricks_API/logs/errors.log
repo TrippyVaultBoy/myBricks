@@ -11,3 +11,16 @@ Error: test error.
     at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
     at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
 
+[2025-08-17T04:09:17.295Z] ERROR: Cannot destructure property 'username' of 'req.body' as it is undefined.
+TypeError: Cannot destructure property 'username' of 'req.body' as it is undefined.
+    at postNew (/root/myBricks/myBricks_API/controllers/usersController.js:7:17)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:117:3)
+    at handle (/root/myBricks/myBricks_API/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at /root/myBricks/myBricks_API/node_modules/router/index.js:295:15
+    at processParams (/root/myBricks/myBricks_API/node_modules/router/index.js:582:12)
+    at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
+    at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
+
