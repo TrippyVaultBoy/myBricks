@@ -9,13 +9,17 @@ const authMiddleware = require('../middleware/authMiddleware.js');
 
 const router = express.Router();
 
+router.get('/error', (req, res, next) => {
+    throw new Error('test error.');
+});
+
 router.post('/users', usersController.postNew);
 router.get('/users/count', usersController.countUsers);
 
 router.post('/login', authController.login);
 router.get('/check', authController.checkToken);
 
-// router.get('/collection', authMiddleware, collectionController.getCollection);
+router.get('/collection', authMiddleware, collectionController.getCollection);
 // router.get('/collection/:setNum', authMiddleware, collectionController.getCollection);
 router.post('/collection/add', authMiddleware, collectionController.addSet);
 router.post('/collection/remove', authMiddleware, collectionController.removeSet);

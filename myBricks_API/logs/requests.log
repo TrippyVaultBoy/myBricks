@@ -1,0 +1,7 @@
+[2025-08-17T01:10:11.141Z] POST /login Status: 200 - 118ms
+[2025-08-17T01:18:09.084Z] GET /error Status: 500 - 3ms
+[2025-08-17T01:20:46.142Z] POST /login Status: 200 - 122ms
+[2025-08-17T01:21:17.269Z] POST /stats/parts Status: 404 - 2ms
+[2025-08-17T01:21:24.922Z] GET /stats/parts Status: 200 - 56ms
+[2025-08-17T01:28:54.234Z] GET /collection Status: 201 - 71ms
+[2025-08-17T01:40:36.115Z] GET /collection Status: 200 - 64ms

@@ -27,7 +27,7 @@ const usersController = {
 
             return res.status(201).json({ id: newUser._id, email: newUser.email });
         } catch (err) {
-            return res.status(500).json({ error: 'Could not create user' });
+            next(err);
         }
     },
 
@@ -36,7 +36,7 @@ const usersController = {
             const count = await User.countDocuments();
             return res.json({ count });
         } catch (err) {
-            return res.status(500).json({ error: 'Error counting users' });
+            next(err);
         }
     }
 };

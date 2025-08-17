@@ -67,7 +67,7 @@ const collectionController = {
             console.log(`Set ${setNum} added to ${user.userName}'s collection`);
             return res.status(201).json({ message: `Set ${setNum} added`, set: cachedSet });
         } catch (err) {
-            res.status(500).json({ error: 'Internal server error' });
+            next(err);
         }
     },
 
@@ -99,6 +99,20 @@ const collectionController = {
         await user.save();
         return res.status(200).json({ message: 'Set updated', setCollection: user.setCollection });
     },
+
+    async getCollection(req, res) {
+        try {
+            if (!req.user || !req.user.id) return res.status(401).json({ error: 'Unauthorized' });
+
+            const userId = req.user.id;
+            const user = await User.findById(userId);
+            if (!user) return res.status(404).json({ error: 'User not found' });
+
+            return res.status(200).json({ collection: user.setCollection });
+        } catch (err) {
+            next(err);
+        }
+    }
 
 }
 
