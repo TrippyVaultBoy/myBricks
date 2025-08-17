@@ -24,3 +24,23 @@ TypeError: Cannot destructure property 'username' of 'req.body' as it is undefin
     at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
     at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
 
+[2025-08-17T05:51:13.165Z] ERROR: userName is not defined
+ReferenceError: userName is not defined
+    at updateSet (/root/myBricks/myBricks_API/controllers/collectionController.js:119:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+[2025-08-17T05:51:46.835Z] ERROR: userName is not defined
+ReferenceError: userName is not defined
+    at updateSet (/root/myBricks/myBricks_API/controllers/collectionController.js:119:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+[2025-08-17T05:52:13.918Z] ERROR: userName is not defined
+ReferenceError: userName is not defined
+    at updateSet (/root/myBricks/myBricks_API/controllers/collectionController.js:119:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+[2025-08-17T05:52:59.485Z] ERROR: userName is not defined
+ReferenceError: userName is not defined
+    at updateSet (/root/myBricks/myBricks_API/controllers/collectionController.js:119:57)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+

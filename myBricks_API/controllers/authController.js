@@ -22,6 +22,7 @@ const authController = {
                 {expiresIn: '1h'}
             );
 
+            console.log(`User ${user.userName} successfully logged in`);
             res.json({ token });
         } catch (err) {
             next(err);

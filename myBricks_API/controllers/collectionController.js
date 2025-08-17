@@ -116,7 +116,7 @@ const collectionController = {
 
             await user.save();
             
-            console.log(`Quantity of set ${setNum} in ${userName}'s collection updated to ${quantity}`);
+            console.log(`Quantity of set ${setNum} in ${user.userName}'s collection updated to ${quantity}`);
             return res.status(200).json({ message: 'Set updated successfully', set: user.setCollection[setIndex] });
         } catch (err) {
             next(err);

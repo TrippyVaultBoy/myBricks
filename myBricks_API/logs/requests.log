@@ -78,3 +78,17 @@
 [2025-08-17T05:37:21.345Z] GET /api-docs/swagger-ui-init.js Status: 200 - 1ms
 [2025-08-17T05:37:21.347Z] GET /api-docs/swagger-ui-standalone-preset.js Status: 304 - 1ms
 [2025-08-17T05:37:21.552Z] GET /api-docs/favicon-32x32.png Status: 304 - 1ms
+[2025-08-17T05:47:28.285Z] POST /user Status: 201 - 153ms
+[2025-08-17T05:47:50.067Z] POST /login Status: 200 - 112ms
+[2025-08-17T05:48:33.883Z] POST /login Status: 200 - 110ms
+[2025-08-17T05:49:11.956Z] GET /collection Status: 200 - 46ms
+[2025-08-17T05:50:25.954Z] POST /collection Status: 201 - 631ms
+[2025-08-17T05:51:13.166Z] PATCH /collection/75435-1 Status: 500 - 95ms
+[2025-08-17T05:51:46.837Z] PATCH /collection/75435-1 Status: 500 - 83ms
+[2025-08-17T05:52:10.247Z] PATCH /collection/75435-1 Status: 400 - 3ms
+[2025-08-17T05:52:13.920Z] PATCH /collection/75435-1 Status: 500 - 86ms
+[2025-08-17T05:52:59.486Z] PATCH /collection/75435-1 Status: 500 - 86ms
+[2025-08-17T05:54:02.414Z] PATCH /collection/75435-1 Status: 200 - 97ms
+[2025-08-17T05:54:18.858Z] PATCH /collection/75435-1 Status: 200 - 94ms
+[2025-08-17T05:54:31.201Z] DELETE /collection/75435-1 Status: 200 - 83ms
+[2025-08-17T05:56:01.329Z] GET /collection/75435-1 Status: 404 - 47ms
