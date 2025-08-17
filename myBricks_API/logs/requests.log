@@ -15,3 +15,4 @@
 [2025-08-17T01:59:28.191Z] GET /collection/40775-1 Status: 404 - 42ms
 [2025-08-17T01:59:31.612Z] GET /collection/40775 Status: 404 - 50ms
 [2025-08-17T02:00:09.579Z] GET /collection/40755-1 Status: 200 - 50ms
+[2025-08-17T02:09:55.475Z] DELETE /collection/40755-1 Status: 200 - 115ms

@@ -19,10 +19,10 @@ router.get('/users/count', usersController.countUsers);
 router.post('/login', authController.login);
 router.get('/check', authController.checkToken);
 
+router.post('/collection/add', authMiddleware, collectionController.addSet);
+router.delete('/collection/:setNum', authMiddleware, collectionController.removeSet);
 router.get('/collection', authMiddleware, collectionController.getCollection);
 router.get('/collection/:setNum', authMiddleware, collectionController.getSet);
-router.post('/collection/add', authMiddleware, collectionController.addSet);
-router.post('/collection/remove', authMiddleware, collectionController.removeSet);
 
 router.get('/stats/parts', authMiddleware, statsController.getPartCount);
 
