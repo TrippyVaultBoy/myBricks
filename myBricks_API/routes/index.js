@@ -20,7 +20,7 @@ router.post('/login', authController.login);
 router.get('/check', authController.checkToken);
 
 router.get('/collection', authMiddleware, collectionController.getCollection);
-// router.get('/collection/:setNum', authMiddleware, collectionController.getCollection);
+router.get('/collection/:setNum', authMiddleware, collectionController.getSet);
 router.post('/collection/add', authMiddleware, collectionController.addSet);
 router.post('/collection/remove', authMiddleware, collectionController.removeSet);
 
