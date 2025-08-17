@@ -3,7 +3,7 @@ const User = require('../models/user.js');
 const LegoSet = require('../models/legoSet.js');
 
 const collectionController = {
-    async addSet(req, res) {
+    async addSet(req, res, next) {
         try {
             const apiKey = process.env.REBRICKABLE_KEY;
 
@@ -87,6 +87,7 @@ const collectionController = {
             user.setCollection.splice(setIndex, 1);
 
             await user.save();
+            console.log(`Set ${setNum} removed from ${user.userName}'s collection`);
             return res.status(200).json({ message: 'Set removed', collection: user.setCollection });
         } catch (err) {
             next(err);
@@ -114,13 +115,15 @@ const collectionController = {
             user.setCollection[setIndex].quantity = quantity;
 
             await user.save();
+            
+            console.log(`Quantity of set ${setNum} in ${userName}'s collection updated to ${quantity}`);
             return res.status(200).json({ message: 'Set updated successfully', set: user.setCollection[setIndex] });
         } catch (err) {
             next(err);
         }
     },
 
-    async getCollection(req, res) {
+    async getCollection(req, res, next) {
         try {
             if (!req.user || !req.user.id) return res.status(401).json({ error: 'Unauthorized' });
 

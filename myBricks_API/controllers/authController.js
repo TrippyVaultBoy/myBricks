@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const authController = {
-    async login(req, res) {
+    async login(req, res, next) {
         const { email, password } = req.body;
 
         if (!email) { return res.status(401).json({ error: 'Missing email' }); }

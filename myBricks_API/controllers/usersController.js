@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.js');
 
 const usersController = {
-    async postNew(req, res) {
+    async postNew(req, res, next) {
         const { username, email, password } = req.body;
 
         if (!username) { return res.status(400).json({ error: 'Missing username'}); }
@@ -25,6 +25,7 @@ const usersController = {
                 password: hashedPassword,
             });
 
+            console.log(`User ${username} successfully created`);
             return res.status(201).json({ message: `User ${username} successfully created`, id: newUser._id, email: newUser.email });
         } catch (err) {
             next(err);

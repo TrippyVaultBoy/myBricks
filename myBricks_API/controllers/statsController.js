@@ -15,6 +15,7 @@ const statsController = {
                 partCount += user.setCollection[i].numParts;
             }
 
+            console.log(`${user.userName}'s collection contains ${partCount} pieces`);
             return res.status(200).json({ partCount });
         } catch (err) {
             next(err);

@@ -72,3 +72,9 @@
 [2025-08-17T04:56:11.692Z] GET /collection Status: 401 - 3ms
 [2025-08-17T04:56:12.394Z] GET /favicon.ico Status: 404 - 8ms
 [2025-08-17T05:18:09.324Z] POST /user Status: 400 - 352ms
+[2025-08-17T05:37:21.158Z] GET /api-docs/ Status: 304 - 11ms
+[2025-08-17T05:37:21.202Z] GET /api-docs/swagger-ui.css Status: 304 - 1ms
+[2025-08-17T05:37:21.203Z] GET /api-docs/swagger-ui-bundle.js Status: 304 - 2ms
+[2025-08-17T05:37:21.345Z] GET /api-docs/swagger-ui-init.js Status: 200 - 1ms
+[2025-08-17T05:37:21.347Z] GET /api-docs/swagger-ui-standalone-preset.js Status: 304 - 1ms
+[2025-08-17T05:37:21.552Z] GET /api-docs/favicon-32x32.png Status: 304 - 1ms
