@@ -15,7 +15,7 @@ async function DBConnect() {
             console.log(`Connected to MongoDB - database: ${mongoose.connection.name}`);
         });
     } catch (err) {
-        next(err);
+        console.error("MongoDB connection error:", err.message);
         process.exit(1);
     }
 }

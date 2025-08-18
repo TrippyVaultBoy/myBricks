@@ -23,10 +23,7 @@ const collectionController = {
             // If set already in collection, update quantity
             const existingSet = user.setCollection.find(s => s.setNum === setNum);
             if (existingSet) {
-                existingSet.quantity += quantity;
-                await user.save();
-                console.log(`Quantity of set ${setNum} updated in ${user.userName}'s collection: ${existingSet.quantity}`);
-                return res.status(200).json({ message: `Quantity updated for set ${setNum}`, set: existingSet});
+                return res.status(400).json({ message: `Set ${setNum} already in collection`, set: existingSet});
             }
             
             // Check if set is cached

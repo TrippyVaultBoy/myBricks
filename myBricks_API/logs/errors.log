@@ -109,3 +109,73 @@ TypeError: Cannot destructure property 'username' of 'req.body' as it is undefin
     at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
     at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
 
+[2025-08-18T06:41:53.434Z] ERROR: Cannot destructure property 'email' of 'req.body' as it is undefined.
+TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+    at login (/root/myBricks/myBricks_API/controllers/authController.js:7:17)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:117:3)
+    at handle (/root/myBricks/myBricks_API/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at /root/myBricks/myBricks_API/node_modules/router/index.js:295:15
+    at processParams (/root/myBricks/myBricks_API/node_modules/router/index.js:582:12)
+    at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
+    at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
+
+[2025-08-18T06:42:15.875Z] ERROR: Cannot destructure property 'email' of 'req.body' as it is undefined.
+TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+    at login (/root/myBricks/myBricks_API/controllers/authController.js:7:17)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:117:3)
+    at handle (/root/myBricks/myBricks_API/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at /root/myBricks/myBricks_API/node_modules/router/index.js:295:15
+    at processParams (/root/myBricks/myBricks_API/node_modules/router/index.js:582:12)
+    at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
+    at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
+
+[2025-08-18T06:42:19.915Z] ERROR: Cannot destructure property 'email' of 'req.body' as it is undefined.
+TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+    at login (/root/myBricks/myBricks_API/controllers/authController.js:7:17)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:117:3)
+    at handle (/root/myBricks/myBricks_API/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at /root/myBricks/myBricks_API/node_modules/router/index.js:295:15
+    at processParams (/root/myBricks/myBricks_API/node_modules/router/index.js:582:12)
+    at next (/root/myBricks/myBricks_API/node_modules/router/index.js:291:5)
+    at Function.handle (/root/myBricks/myBricks_API/node_modules/router/index.js:186:3)
+
+[2025-08-18T21:49:45.745Z] ERROR: Operation `users.findOne()` buffering timed out after 10000ms
+MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (/root/myBricks/myBricks_API/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:187:23)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+
+[2025-08-18T21:54:20.518Z] ERROR: Operation `users.findOne()` buffering timed out after 10000ms
+MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (/root/myBricks/myBricks_API/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:187:23)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+
+[2025-08-18T21:54:33.750Z] ERROR: Operation `users.findOne()` buffering timed out after 10000ms
+MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (/root/myBricks/myBricks_API/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:187:23)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+
+[2025-08-18T22:04:52.269Z] ERROR: Cannot destructure property 'setNum' of 'req.body' as it is undefined.
+TypeError: Cannot destructure property 'setNum' of 'req.body' as it is undefined.
+    at addSet (/root/myBricks/myBricks_API/controllers/collectionController.js:10:21)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+    at /root/myBricks/myBricks_API/middleware/authMiddleware.js:14:9
+    at /root/myBricks/myBricks_API/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/root/myBricks/myBricks_API/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/root/myBricks/myBricks_API/node_modules/jsonwebtoken/verify.js:101:10)
+    at authMiddleware (/root/myBricks/myBricks_API/middleware/authMiddleware.js:10:9)
+    at Layer.handleRequest (/root/myBricks/myBricks_API/node_modules/router/lib/layer.js:152:17)
+    at next (/root/myBricks/myBricks_API/node_modules/router/lib/route.js:157:13)
+

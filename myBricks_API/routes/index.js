@@ -101,10 +101,22 @@ router.get('/error', (req, res, next) => {
  */
 router.post('/user', usersController.postNew);
 
+/**
+ * 
+ */
 router.post('/login', authController.login);
 
+/**
+ * 
+ */
 router.get('/collection', authMiddleware, collectionController.getCollection);
+/**
+ * 
+ */
 router.get('/collection/:setNum', authMiddleware, collectionController.getSet);
+/**
+ * 
+ */
 router.post('/collection', authMiddleware, collectionController.addSet);
 router.patch('/collection/:setNum', authMiddleware, collectionController.updateSet);
 router.delete('/collection/:setNum', authMiddleware, collectionController.removeSet);
