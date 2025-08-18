@@ -32,7 +32,7 @@ const collectionController = {
             // If set is not cached, fetch from api and store
             if (!cachedSet) {
                 const response = await fetch(`https://rebrickable.com/api/v3/lego/sets/${setNum}/?key=${apiKey}`);
-                if (!response.ok) return res.status(400).json({ error: 'Could not retrieve set info' });
+                if (!response.ok) return res.status(500).json({ error: 'Could not retrieve set info' });
 
                 const setData = await response.json();
 
