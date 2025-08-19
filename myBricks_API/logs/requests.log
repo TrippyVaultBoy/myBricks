@@ -213,3 +213,11 @@
 [2025-08-19T00:20:45.112Z] DELETE /collection/75435-1 Status: 404 - 43ms
 [2025-08-19T00:22:07.170Z] POST /stats/parts Status: 404 - 2ms
 [2025-08-19T00:22:11.532Z] GET /stats/parts Status: 403 - 7ms
+[2025-08-19T00:23:35.898Z] POST /user Status: 201 - 160ms
+[2025-08-19T00:23:41.788Z] POST /login Status: 200 - 112ms
+[2025-08-19T00:24:04.566Z] POST /collection Status: 201 - 132ms
+[2025-08-19T00:24:17.360Z] GET /stats/parts Status: 403 - 5ms
+[2025-08-19T00:24:41.339Z] GET /stats/parts Status: 200 - 49ms
+[2025-08-19T00:25:41.067Z] GET /stats/parts Status: 404 - 46ms
+[2025-08-19T00:25:57.600Z] GET /stats/parts Status: 404 - 49ms
+[2025-08-19T00:28:47.371Z] POST /user Status: 201 - 163ms
