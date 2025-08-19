@@ -79,7 +79,7 @@ const collectionController = {
             if (!user) return res.status(404).json({ error: 'User not found' });
 
             const setIndex = user.setCollection.findIndex(s => s.setNum === setNum);
-            if (setIndex === -1) return res.status(404).json({ error: 'Set not in collection' });
+            if (setIndex === -1) return res.status(404).json({ error: 'Set not found in collection' });
 
             user.setCollection.splice(setIndex, 1);
 

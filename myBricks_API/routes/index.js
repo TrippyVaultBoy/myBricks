@@ -118,9 +118,18 @@ router.get('/collection/:setNum', authMiddleware, collectionController.getSet);
  * 
  */
 router.post('/collection', authMiddleware, collectionController.addSet);
+/**
+ * 
+ */
 router.patch('/collection/:setNum', authMiddleware, collectionController.updateSet);
+/**
+ * 
+ */
 router.delete('/collection/:setNum', authMiddleware, collectionController.removeSet);
 
+/**
+ * 
+ */
 router.get('/stats/parts', authMiddleware, statsController.getPartCount);
 
 module.exports = router;
