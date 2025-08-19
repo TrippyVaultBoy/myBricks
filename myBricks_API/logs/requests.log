@@ -221,3 +221,16 @@
 [2025-08-19T00:25:41.067Z] GET /stats/parts Status: 404 - 46ms
 [2025-08-19T00:25:57.600Z] GET /stats/parts Status: 404 - 49ms
 [2025-08-19T00:28:47.371Z] POST /user Status: 201 - 163ms
+[2025-08-19T00:33:02.555Z] POST /login Status: 200 - 122ms
+[2025-08-19T00:36:37.392Z] GET /collection Status: 401 - 6ms
+[2025-08-19T00:37:42.994Z] GET /collection Status: 401 - 4ms
+[2025-08-19T00:38:44.203Z] GET /collection/75435-1 Status: 401 - 4ms
+[2025-08-19T00:40:22.296Z] POST /collection Status: 404 - 48ms
+[2025-08-19T00:40:52.229Z] POST /collection Status: 404 - 45ms
+[2025-08-19T00:44:41.028Z] GET /stats/parts Status: 404 - 66ms
+[2025-08-19T01:08:54.985Z] GET / Status: 404 - 4ms
+[2025-08-19T01:09:00.449Z] GET /api-docs/ Status: 304 - 6ms
+[2025-08-19T01:09:00.507Z] GET /api-docs/swagger-ui.css Status: 304 - 20ms
+[2025-08-19T01:09:00.510Z] GET /api-docs/swagger-ui-bundle.js Status: 304 - 22ms
+[2025-08-19T01:09:00.615Z] GET /api-docs/swagger-ui-standalone-preset.js Status: 304 - 1ms
+[2025-08-19T01:09:00.655Z] GET /api-docs/swagger-ui-init.js Status: 200 - 1ms
