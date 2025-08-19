@@ -234,3 +234,8 @@
 [2025-08-19T01:09:00.510Z] GET /api-docs/swagger-ui-bundle.js Status: 304 - 22ms
 [2025-08-19T01:09:00.615Z] GET /api-docs/swagger-ui-standalone-preset.js Status: 304 - 1ms
 [2025-08-19T01:09:00.655Z] GET /api-docs/swagger-ui-init.js Status: 200 - 1ms
+[2025-08-19T01:10:35.868Z] GET /api-docs/ Status: 304 - 2ms
+[2025-08-19T01:10:35.906Z] GET /api-docs/swagger-ui.css Status: 304 - 1ms
+[2025-08-19T01:10:35.907Z] GET /api-docs/swagger-ui-bundle.js Status: 304 - 1ms
+[2025-08-19T01:10:36.018Z] GET /api-docs/swagger-ui-init.js Status: 304 - 1ms
+[2025-08-19T01:10:36.019Z] GET /api-docs/swagger-ui-standalone-preset.js Status: 304 - 1ms
