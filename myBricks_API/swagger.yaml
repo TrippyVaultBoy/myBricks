@@ -30,7 +30,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -52,15 +52,13 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "message": "User user123 successfully created",
-                    "id": "68a2c7e07971b1d2f0126ab9",
-                    "email": "user@example.com"
-                }
+                type: object
+              example:
+                message: User user123 successfully created
+                id: 68a2c7e07971b1d2f0126ab9
+                email: user@example.com
         '400':
           description: Bad Request
           headers:
@@ -71,7 +69,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -93,73 +91,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: User already exists
-                  value: |-
-                    {
-                        "error": "User already exists"
-                    }
+                  value:
+                    error: User already exists
                 example-1:
                   summary: Missing email
-                  value: |-
-                    {
-                        "error": "Missing email"
-                    }
+                  value:
+                    error: Missing email
                 example-2:
                   summary: Missing username
-                  value: |-
-                    {
-                        "error": "Missing username"
-                    }
+                  value:
+                    error: Missing username
                 example-3:
                   summary: Missing password
-                  value: |-
-                    {
-                        "error": "Missing password"
-                    }
-        '401':
-          description: Unauthorized
-          headers:
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '106'
-            ETag:
-              schema:
-                type: string
-                example: W/"6a-giqdLdzJ7nj23NNMgVgAaQp7Dkk"
-            Date:
-              schema:
-                type: string
-                example: Tue, 19 Aug 2025 00:28:47 GMT
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=5
-          content:
-            text/plain:
-              schema:
-                type: string
-              example: |-
-                {
-                    "error": "Invalid or expired token"
-                }
+                  value:
+                    error: Missing password
   /login:
     post:
       tags:
@@ -184,7 +135,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -206,13 +157,12 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTJjN2UwNzk3MWIxZDJmMDEyNmFiOSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTQ5OTM2MSwiZXhwIjoxNzU1NTAyOTYxfQ.LwWgNNXpVyUBLFW6QsYon-X2kLoqfd_chLkyRHSFriY"
-                }
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTJjN2UwNzk3MWIxZDJmMDEyNmFiOSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTQ5OTM2MSwiZXhwIjoxNzU1NTAyOTYxfQ.LwWgNNXpVyUBLFW6QsYon-X2kLoqfd_chLkyRHSFriY
         '400':
           description: Bad Request
           headers:
@@ -223,7 +173,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -245,22 +195,18 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Missing email
-                  value: |-
-                    {
-                        "error": "Missing email"
-                    }
+                  value:
+                    error: Missing email
                 example-1:
                   summary: Missing password
-                  value: |-
-                    {
-                        "error": "Missing password"
-                    }
+                  value:
+                    error: Missing password
         '401':
           description: Unauthorized
           headers:
@@ -271,7 +217,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -293,13 +239,11 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "error": "Invalid or expired token"
-                }
+                type: object
+              example:
+                error: Invalid credentials
   /collection:
     get:
       tags:
@@ -313,11 +257,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTJjYzVlZTk3MzBkYmU3OGFhN2JmMSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU1NDY0MiwiZXhwIjoxNzU1NTU4MjQyfQ.kSk6tYPPvnRE9nWwBkhDPbgB2UL0UBHLDHRQAclhrL0
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -329,7 +268,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -351,25 +290,20 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "collection": [
-                        {
-                            "setNum": "75435-1",
-                            "quantity": 1,
-                            "addedAt": "2025-08-18T22:09:02.730Z",
-                            "name": "Battle of Felucia Separatist MTT",
-                            "themeId": 158,
-                            "year": 2025,
-                            "numParts": 976,
-                            "setImgUrl": "https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg",
-                            "_id": "68a3a47e5440e2ca68895360"
-                        }
-                    ]
-                }
+                type: object
+              example:
+                collection:
+                  - setNum: 75435-1
+                    quantity: 1
+                    addedAt: '2025-08-18T22:09:02.730Z'
+                    name: Battle of Felucia Separatist MTT
+                    themeId: 158
+                    year: 2025
+                    numParts: 976
+                    setImgUrl: https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg
+                    _id: 68a3a47e5440e2ca68895360
         '401':
           description: Unauthorized
           headers:
@@ -380,7 +314,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -402,34 +336,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Unauthorized
-                  value: |-
-                    {
-                        "error": "Unauthorized"
-                    }
+                  value:
+                    error: Unauthorized
                 example-1:
                   summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  value:
+                    error: No token provided
                 example-2:
                   summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  value:
+                    error: Malformed token
                 example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '404':
           description: Not Found
           headers:
@@ -440,7 +366,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -462,23 +388,23 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "error": "User not found"
-                }
+                type: object
+              example:
+                error: User not found
     post:
       tags:
         - default
       summary: Add set to collection
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              type: string
-              example: '"{\n    \"setNum\": \"75435-1\",\n    \"quantity\": 1\n}"'
+              type: object
+              example:
+                setNum: 75435-1
+                quantity: 1
       parameters:
         - name: Authorization
           in: header
@@ -487,11 +413,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTNjNDA3OTI5ZTZhZTg4NWExNjc1OSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU2MzAyMSwiZXhwIjoxNzU1NTY2NjIxfQ.pQDmsM2eyTWX5qjs3bE-7RHTeUS0px81fbAFddQ44TA
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '201':
           description: Created
@@ -503,7 +424,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -525,24 +446,21 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "message": "Set 75435-1 added",
-                    "set": {
-                        "_id": "68a16da17c56758968ddf631",
-                        "setNum": "75435-1",
-                        "name": "Battle of Felucia Separatist MTT",
-                        "themeId": 158,
-                        "year": 2025,
-                        "numParts": 976,
-                        "setImgUrl": "https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg",
-                        "lastFetched": "2025-08-17T05:50:25.852Z",
-                        "__v": 0
-                    }
-                }
+                type: object
+              example:
+                message: Set 75435-1 added
+                set:
+                  _id: 68a16da17c56758968ddf631
+                  setNum: 75435-1
+                  name: Battle of Felucia Separatist MTT
+                  themeId: 158
+                  year: 2025
+                  numParts: 976
+                  setImgUrl: https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg
+                  lastFetched: '2025-08-17T05:50:25.852Z'
+                  __v: 0
         '400':
           description: Bad Request
           headers:
@@ -553,7 +471,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -575,39 +493,33 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Missing set number
-                  value: |-
-                    {
-                        "error": "Missing set number"
-                    }
+                  value:
+                    error: Missing set number
                 example-1:
                   summary: Quantity not a positive integer
-                  value: |-
-                    {
-                        "error": "Quantity must be a positive integer"
-                    }
+                  value:
+                    error: Quantity must be a positive integer
                 example-2:
                   summary: Set already in collection
-                  value: |-
-                    {
-                        "message": "Set 75435-1 already in collection",
-                        "set": {
-                            "setNum": "75435-1",
-                            "quantity": 1,
-                            "addedAt": "2025-08-18T22:30:13.445Z",
-                            "name": "Battle of Felucia Separatist MTT",
-                            "themeId": 158,
-                            "year": 2025,
-                            "numParts": 976,
-                            "setImgUrl": "https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg",
-                            "_id": "68a3a9755440e2ca6889537d"
-                        }
-                    }
+                  value:
+                    message: Set 75435-1 already in collection
+                    set:
+                      setNum: 75435-1
+                      quantity: 1
+                      addedAt: '2025-08-18T22:30:13.445Z'
+                      name: Battle of Felucia Separatist MTT
+                      themeId: 158
+                      year: 2025
+                      numParts: 976
+                      setImgUrl: >-
+                        https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg
+                      _id: 68a3a9755440e2ca6889537d
         '401':
           description: Unauthorized
           headers:
@@ -618,7 +530,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -640,34 +552,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Unauthorized
-                  value: |-
-                    {
-                        "error": "Unauthorized"
-                    }
+                  value:
+                    error: Unauthorized
                 example-1:
                   summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  value:
+                    error: No token provided
                 example-2:
                   summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  value:
+                    error: Malformed token
                 example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '500':
           description: Internal Server Error
           headers:
@@ -678,7 +582,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -700,13 +604,11 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "error": "Could not retrieve set info"
-                }
+                type: object
+              example:
+                error: Could not retrieve set info
   /collection/75435-1:
     get:
       tags:
@@ -720,11 +622,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTNhNzlkNTQ0MGUyY2E2ODg5NTM2YiIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU1NTc1MSwiZXhwIjoxNzU1NTU5MzUxfQ.EmKWiKpIgw9owYRQxzK4IWv4scQvWtLdWHm4BnnIrBM
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -736,7 +633,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -758,23 +655,20 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "set": {
-                        "setNum": "75435-1",
-                        "quantity": 1,
-                        "addedAt": "2025-08-18T22:23:42.098Z",
-                        "name": "Battle of Felucia Separatist MTT",
-                        "themeId": 158,
-                        "year": 2025,
-                        "numParts": 976,
-                        "setImgUrl": "https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg",
-                        "_id": "68a3a7ee5440e2ca68895370"
-                    }
-                }
+                type: object
+              example:
+                set:
+                  setNum: 75435-1
+                  quantity: 1
+                  addedAt: '2025-08-18T22:23:42.098Z'
+                  name: Battle of Felucia Separatist MTT
+                  themeId: 158
+                  year: 2025
+                  numParts: 976
+                  setImgUrl: https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg
+                  _id: 68a3a7ee5440e2ca68895370
         '401':
           description: Unauthorized
           headers:
@@ -785,7 +679,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -807,34 +701,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Unauthorized
-                  value: |-
-                    {
-                        "error": "Unauthorized"
-                    }
+                  value:
+                    error: Unauthorized
                 example-1:
                   summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  value:
+                    error: No token provided
                 example-2:
                   summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  value:
+                    error: Malformed token
                 example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '404':
           description: Not Found
           headers:
@@ -845,7 +731,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -867,32 +753,29 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: User not found
-                  value: |-
-                    {
-                        "error": "User not found"
-                    }
+                  value:
+                    error: User not found
                 example-1:
                   summary: Set not found in collection
-                  value: |-
-                    {
-                        "error": "Set not found in collection"
-                    }
+                  value:
+                    error: Set not found in collection
     patch:
       tags:
         - default
       summary: Update set quantity
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              type: string
-              example: '"{\n    \"quantity\": 3\n}"'
+              type: object
+              example:
+                quantity: 3
       parameters:
         - name: Authorization
           in: header
@@ -901,11 +784,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTNhNzlkNTQ0MGUyY2E2ODg5NTM2YiIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU2MTgyOCwiZXhwIjoxNzU1NTY1NDI4fQ.l_eVsSIQxVtI3qu30dwq-ajsE2IPN5AEMTmxXyzI8ak
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -917,7 +795,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -939,24 +817,21 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "message": "Set updated successfully",
-                    "set": {
-                        "setNum": "75435-1",
-                        "quantity": 2,
-                        "addedAt": "2025-08-18T22:30:13.445Z",
-                        "name": "Battle of Felucia Separatist MTT",
-                        "themeId": 158,
-                        "year": 2025,
-                        "numParts": 976,
-                        "setImgUrl": "https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg",
-                        "_id": "68a3a9755440e2ca6889537d"
-                    }
-                }
+                type: object
+              example:
+                message: Set updated successfully
+                set:
+                  setNum: 75435-1
+                  quantity: 2
+                  addedAt: '2025-08-18T22:30:13.445Z'
+                  name: Battle of Felucia Separatist MTT
+                  themeId: 158
+                  year: 2025
+                  numParts: 976
+                  setImgUrl: https://cdn.rebrickable.com/media/sets/75435-1/158323.jpg
+                  _id: 68a3a9755440e2ca6889537d
         '400':
           description: Bad Request
           headers:
@@ -967,7 +842,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -989,13 +864,11 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "error": "Quantity must be a positive integer"
-                }
+                type: object
+              example:
+                error: Quantity must be a positive integer
         '401':
           description: Unauthorized
           headers:
@@ -1006,7 +879,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1028,28 +901,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
-                  summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  summary: Unauthorized
+                  value:
+                    error: Unauthorized
                 example-1:
-                  summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  summary: No token provided
+                  value:
+                    error: No token provided
                 example-2:
+                  summary: Malformed token
+                  value:
+                    error: Malformed token
+                example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '404':
           description: Not Found
           headers:
@@ -1060,7 +931,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1082,22 +953,18 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Set not found in collection
-                  value: |-
-                    {
-                        "error": "Set not in collection"
-                    }
+                  value:
+                    error: Set not in collection
                 example-1:
                   summary: User not found
-                  value: |-
-                    {
-                        "error": "User not found"
-                    }
+                  value:
+                    error: User not found
     delete:
       tags:
         - default
@@ -1110,11 +977,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTNjMjEwODVkZjdjOWI5MjY2YjdjOSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU2MjUxOCwiZXhwIjoxNzU1NTY2MTE4fQ.Ns4_oV5eILp37wb0IVrxjUp3r09yclZATqJ9Vz9CfME
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -1126,7 +988,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1148,14 +1010,12 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "message": "Set removed",
-                    "collection": []
-                }
+                type: object
+              example:
+                message: Set removed
+                collection: []
         '401':
           headers:
             X-Powered-By:
@@ -1165,7 +1025,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1187,34 +1047,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Unauthorized
-                  value: |-
-                    {
-                        "error": "Unauthorized"
-                    }
+                  value:
+                    error: Unauthorized
                 example-1:
                   summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  value:
+                    error: No token provided
                 example-2:
                   summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  value:
+                    error: Malformed token
                 example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '404':
           description: Not Found
           headers:
@@ -1225,7 +1077,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1247,22 +1099,18 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Set not found in collection
-                  value: |-
-                    {
-                        "error": "Set not found in collection"
-                    }
+                  value:
+                    error: Set not found in collection
                 example-1:
                   summary: User not found
-                  value: |-
-                    {
-                        "error": "User not found"
-                    }
+                  value:
+                    error: User not found
   /stats/parts:
     get:
       tags:
@@ -1276,11 +1124,6 @@ paths:
           example: >-
             Bearer
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTNjNDA3OTI5ZTZhZTg4NWExNjc1OSIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTc1NTU2MzAyMSwiZXhwIjoxNzU1NTY2NjIxfQ.pQDmsM2eyTWX5qjs3bE-7RHTeUS0px81fbAFddQ44TA
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
@@ -1292,7 +1135,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1314,13 +1157,11 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "partCount": 976
-                }
+                type: object
+              example:
+                partCount: 976
         '401':
           description: Unauthorized
           headers:
@@ -1331,7 +1172,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1353,34 +1194,26 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
               examples:
                 example-0:
                   summary: Unauthorized
-                  value: |-
-                    {
-                        "error": "Unauthorized"
-                    }
+                  value:
+                    error: Unauthorized
                 example-1:
                   summary: No token provided
-                  value: |-
-                    {
-                        "error": "No token provided"
-                    }
+                  value:
+                    error: No token provided
                 example-2:
                   summary: Malformed token
-                  value: |-
-                    {
-                        "error": "Malformed token"
-                    }
+                  value:
+                    error: Malformed token
                 example-3:
                   summary: Invalid token
-                  value: |-
-                    {
-                        "error": "Invalid or expired token"
-                    }
+                  value:
+                    error: Invalid or expired token
         '404':
           description: Not Found
           headers:
@@ -1391,7 +1224,7 @@ paths:
             Content-Type:
               schema:
                 type: string
-                example: application/json; charset=utf-8
+                example: application/json
             Content-Length:
               schema:
                 type: integer
@@ -1413,10 +1246,8 @@ paths:
                 type: string
                 example: timeout=5
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-              example: |-
-                {
-                    "error": "User not found"
-                }
+                type: object
+              example:
+                error: User not found
