@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
       <body>
         <h1>Welcome to MyBricks API</h1>
         <p>Frontend coming soon!</p>
-        <p>For API documentation visit <a href="https://mybricks.dev/api-docs">mybricks.dev/api-docs</a></p>
+        <p>For detailed API documentation visit <a href="https://mybricks.dev/api-docs">mybricks.dev/api-docs</a></p>
       </body>
     </html>
   `);
