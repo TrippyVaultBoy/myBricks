@@ -13,6 +13,19 @@ router.get('/error', (req, res, next) => {
     throw new Error('test error.');
 });
 
+router.get('/', (req, res) => {
+    res.send(`
+    <html>
+      <head><title>MyBricks API</title></head>
+      <body>
+        <h1>Welcome to MyBricks API</h1>
+        <p>Frontend coming soon!</p>
+        <p>For API documentation visit <a href="https://mybricks.dev/api-docs">mybricks.dev/api-docs</a></p>
+      </body>
+    </html>
+  `);
+})
+
 /**
  * @swagger
  * openapi: 3.0.0
