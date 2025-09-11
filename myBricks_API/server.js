@@ -12,15 +12,17 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 
 const server = express();
 server.use(express.json());
-server.use(requestLogger);
-server.use('/', routes);
-server.use(errorHandler);
-server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 server.use(cors({
   origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+server.use(requestLogger);
+server.use('/', routes);
+server.use(errorHandler);
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 DBConnect();
 
