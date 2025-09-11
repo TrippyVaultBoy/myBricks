@@ -22,7 +22,7 @@ function Header() {
     }
     
     return (
-        <div className="max-w-screen-xl bg-[var(--color-bricksTeal)] flex justify-between mx-auto items-center rounded-b-3xl p-5">
+        <div className="flex-none w-full max-w-screen-xl bg-[var(--color-bricksTeal)] flex justify-between mx-auto items-center rounded-b-3xl p-5">
             {/* Logo */}
             <div className="text-2xl font-bold text-[var(--color-bricksNavy)]">myBricks</div>
 
