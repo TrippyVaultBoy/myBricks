@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Login({ closeModal }) {
+function Login({ closeModal, onLogin }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -25,6 +25,7 @@ function Login({ closeModal }) {
 
             localStorage.setItem("jwtToken", token);
 
+            if (onLogin) onLogin();
             closeModal();
         } catch (error) {
             console.error(error);
