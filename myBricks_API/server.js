@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const DBConnect = require('./utils/db.js');
 const swaggerUi = require('swagger-ui-express');
 const requestLogger = require('./middleware/logger.js');
@@ -15,6 +16,11 @@ server.use(requestLogger);
 server.use('/', routes);
 server.use(errorHandler);
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+server.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 DBConnect();
 
