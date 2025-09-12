@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Login from "./Login";
+import SignUp from "./SignUp";
 
 function Header() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -17,8 +19,12 @@ function Header() {
         setIsLoggedIn(false);
     }
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
+    const toggleLoginModal = () => {
+        setIsLoginModalOpen(!isLoginModalOpen);
+    }
+
+    const toggleSignUpModal = () => {
+        setIsSignUpModalOpen(!isSignUpModalOpen);
     }
     
     return (
@@ -47,9 +53,14 @@ function Header() {
                             </li>
                         </>
                     ) : (
-                    <li className="px-3">
-                        <button className="hover:underline" onClick={toggleModal}>Login</button>
-                    </li>
+                        <>
+                            <li className="px-3">
+                                <button className="hover:underline" onClick={toggleSignUpModal}>Sign Up</button>
+                            </li>
+                            <li className="px-3">
+                                <button className="hover:underline" onClick={toggleLoginModal}>Login</button>
+                            </li>
+                        </>
                     )}
                     
                     <li className="px-3">
@@ -58,10 +69,16 @@ function Header() {
                 </ul>
             </nav>
 
-            {isModalOpen && (
+            {isLoginModalOpen && (
                 <Login
-                    closeModal={() => setIsModalOpen(false)}
+                    closeModal={() => setIsLoginModalOpen(false)}
                     onLogin={() => setIsLoggedIn(true)}
+                />
+            )}
+
+            {isSignUpModalOpen && (
+                <SignUp
+                    closeModal={() => setIsSignUpModalOpen(false)}
                 />
             )}
         </div>

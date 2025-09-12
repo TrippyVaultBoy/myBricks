@@ -34,18 +34,19 @@ function Login({ closeModal, onLogin }) {
     }
     
     return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
         <form
-            className="flex flex-col bg-white p-6 rounded-4xl max-w-md w-full"
+            className="flex flex-col bg-white p-6 rounded-4xl max-w-md w-full border border-[var(--color-bricksTeal)]"
             onSubmit={handleLogin}
         >
+            <h1 className="text-[var(--color-bricksNavy)] text-xl font-bold text-center p-5">Login</h1>
             <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mb-5"
+                className="mb-5  border border-[var(--color-bricksTeal)] rounded-3xl p-2"
             />
             <input
                 type="password"
@@ -53,16 +54,16 @@ function Login({ closeModal, onLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mb-5"
+                className="mb-5  border border-[var(--color-bricksTeal)] rounded-3xl p-2"
             />
-            <button type="submit" className="bg-[var(--color-bricksNavy)] text-white text-xl rounded-4xl font-bold mb-4 p-2 text-center">
+            <button type="submit" className="bg-[var(--color-bricksNavy)] text-white rounded-4xl mb-4 p-2 text-center transform transition-transform hover:scale-102 hover:shadow-lg hover:cursor-pointer">
                 Login
             </button>
 
             
             <button
             onClick={closeModal}
-            className="bg-[var(--color-bricksTeal)] text-white text-xl rounded-4xl font-bold mb-4 p-2 text-center"
+            className="bg-[var(--color-bricksTeal)] text-white rounded-4xl mb-4 p-2 text-center hover:shadow-lg hover:cursor-pointer"
             >
             Close
             </button>
