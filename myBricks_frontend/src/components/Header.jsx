@@ -34,37 +34,37 @@ function Header() {
 
             {/* Navigation */}
             <nav>
-                <ul className="flex divide-x text-[var(--color-bricksNavy)]">
-                    <li className="px-3">
-                        <Link className="hover:underline">Browse</Link>
+                <ul className="flex items-center text-[var(--color-bricksNavy)]">
+                    <li className="px-2">
+                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer">Browse</Link>
                     </li>
                     
-                    <li className="px-3">
-                        <Link className="hover:underline">Collection</Link>
+                    <li className="px-2">
+                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer">Collection</Link>
                     </li>
                     
                     {isLoggedIn ? (
                         <>
-                            <li className="px-3">
-                                <Link className="hover:underline">Account</Link>
+                            <li className="px-2">
+                                <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer">Account</Link>
                             </li>
-                            <li className="px-3">
-                                <button onClick={handleLogout}>Log Out</button>
+                            <li className="px-2">
+                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200" onClick={handleLogout}>Log Out</button>
                             </li>
                         </>
                     ) : (
                         <>
-                            <li className="px-3">
-                                <button className="hover:underline" onClick={toggleSignUpModal}>Sign Up</button>
+                            <li className="px-2">
+                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer" onClick={toggleSignUpModal}>Sign Up</button>
                             </li>
-                            <li className="px-3">
-                                <button className="hover:underline" onClick={toggleLoginModal}>Login</button>
+                            <li className="px-2">
+                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer" onClick={toggleLoginModal}>Login</button>
                             </li>
                         </>
                     )}
                     
-                    <li className="px-3">
-                        <Link className="hover:underline">Light</Link>
+                    <li className="px-2">
+                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksNavy)] hover:text-[var(--color-bricksWhite)] transition-colors duration-200 hover:cursor-pointer">Light</Link>
                     </li>
                 </ul>
             </nav>
