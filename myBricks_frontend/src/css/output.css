@@ -186,11 +186,32 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
   .fixed {
     position: fixed;
   }
+  .relative {
+    position: relative;
+  }
   .inset-0 {
     inset: calc(var(--spacing) * 0);
+  }
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
+  .top-1\/2 {
+    top: calc(1/2 * 100%);
+  }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
+  .top-3 {
+    top: calc(var(--spacing) * 3);
+  }
+  .right-3 {
+    right: calc(var(--spacing) * 3);
   }
   .m-auto {
     margin: auto;
@@ -200,6 +221,18 @@
   }
   .mt-auto {
     margin-top: auto;
+  }
+  .mr-1 {
+    margin-right: calc(var(--spacing) * 1);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .mr-10 {
+    margin-right: calc(var(--spacing) * 10);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
@@ -240,6 +273,22 @@
   .border-collapse {
     border-collapse: collapse;
   }
+  .-translate-y-1 {
+    --tw-translate-y: calc(var(--spacing) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-1\/2 {
+    --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-1\/3 {
+    --tw-translate-y: calc(calc(1/3 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-1\/8 {
+    --tw-translate-y: calc(calc(1/8 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .-translate-y-full {
     --tw-translate-y: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -247,11 +296,17 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
+  .cursor-pointer {
+    cursor: pointer;
+  }
   .resize {
     resize: both;
   }
   .flex-col {
     flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
   }
   .items-center {
     align-items: center;
@@ -377,6 +432,12 @@
   .text-\[var\(--color-bricksNavy\)\] {
     color: var(--color-bricksNavy);
   }
+  .text-\[var\(--color-bricksTeal\)\] {
+    color: var(--color-bricksTeal);
+  }
+  .text-\[var\(--color-bricksWhite\)\] {
+    color: var(--color-bricksWhite);
+  }
   .text-white {
     color: var(--color-white);
   }
@@ -481,6 +542,20 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-bricksNavy);
+      }
+    }
+  }
+  .hover\:bg-\[var\(--color-bricksTeal\)\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-bricksTeal);
+      }
+    }
+  }
+  .hover\:text-\[var\(--color-bricksNavy\)\] {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-bricksNavy);
       }
     }
   }
