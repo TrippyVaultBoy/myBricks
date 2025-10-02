@@ -1,14 +1,42 @@
 import {  createContext, useContext, useState, useEffect } from "react";
 
+import { fetchCollection, fetchSet } from "../services/SetData";
+import { useNavigate } from "react-router-dom";
+
 const MyBricksContext = createContext(null);
 
-export function MyBricksProvider({children, value}) {
+export function MyBricksProvider({ children }) {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        return !!localStorage.getItem("jwtToken") || !!sessionStorage.getItem("jwtToken");
+    });
+    const [collection, setCollection] = useState([]);
+    const [selectedSet, setSelectedSet] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem("jwtToken") || sessionStorage.getItem("jwtToken");
         setIsLoggedIn(!!token);
+    }, []);
+
+    useEffect(() => {
+        const loadCollection = async () => {
+            try {
+                const collectionResponse = await fetchCollection();
+                if (collectionResponse.success) {
+                    console.log(collectionResponse.collectionData);
+                    setCollection(collectionResponse.collectionData.collection);
+                } else {
+                    console.error(collectionResponse.message);
+                    setCollection([]);
+                }
+            } catch (error) {
+                console.error(error);
+                setCollection([]);
+            }
+        };
+
+        loadCollection();
     }, []);
     
     const handleLogin = async (email, password, rememberMe, e) => {
@@ -36,23 +64,32 @@ export function MyBricksProvider({children, value}) {
                 sessionStorage.setItem("jwtToken", token);
             }
             setIsLoggedIn(true);
+            
+            const collectionResponse = await fetchCollection();
+            if (collectionResponse.success) {
+                console.log(collectionResponse.collectionData);
+                setCollection(collectionResponse.collectionData.collection);
+            } else {
+                console.error(collectionResponse.message);
+                setCollection([]);
+            }
+            
             return({ success: true, message:"Login successful"});
         } catch (error) {
-            console.Error("Login failure: ", error);
+            console.error("Login failure: ", error);
             return { success: false, message: "Something went wrong. Try again." };
         }
-    }
+    };
 
     const handleLogout = () => {
-        if (localStorage.getItem("jwtToken")) {
-            console.log(localStorage.getItem("jwtToken"));
-            localStorage.removeItem("jwtToken");
-        } else if (sessionStorage.getItem("jwtToken")) {
-            console.log(sessionStorage.getItem("jwtToken"));
-            sessionStorage.removeItem("jwtToken");
-        }
+        setCollection([]);
+        localStorage.removeItem("jwtToken");
+        sessionStorage.removeItem("jwtToken");
         setIsLoggedIn(false);
-    }
+        setTimeout(() => {
+            navigate("/"); // redirect to home
+        }, 0);
+    };
 
     const handleSignUp = async (username, email, password, e) => {
         e.preventDefault();
@@ -73,10 +110,32 @@ export function MyBricksProvider({children, value}) {
         } catch (error) {
             return({ success: false, message:"Sign up failed"});
         }
-    }
+    };
+
+    const getCollection = async () => {
+        const data = await fetchCollection();
+        setCollection(data.collectionData);
+    };
+
+    const getSet = async (setNumber) => {
+        const data = await fetchSet();
+        setSelectedSet(data.setData);
+    };
     
     return (
-        <MyBricksContext.Provider value={{isLoggedIn, setIsLoggedIn, handleLogin, handleLogout, handleSignUp}}>
+        <MyBricksContext.Provider
+            value={{
+                isLoggedIn,
+                setIsLoggedIn,
+                handleLogin,
+                handleLogout,
+                handleSignUp,
+                collection,
+                getCollection,
+                selectedSet,
+                getSet,
+            }}
+        >
             {children}
         </MyBricksContext.Provider>
     )

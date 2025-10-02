@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useMyBricksContext } from "./ContextProvider";
+import { useMyBricksContext } from "./components/ContextProvider";
 
 const PrivateRoutes = () => {
     const { isLoggedIn } = useMyBricksContext();

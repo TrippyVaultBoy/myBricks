@@ -21,12 +21,14 @@ function Header() {
                     <li className="px-2">
                         <Link
                             className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                            to="/browse"
                         >Browse</Link>
                     </li>
                     
                     <li className="px-2">
                         <Link
                             className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                            to="/collection"
                         >Collection</Link>
                     </li>
                     
@@ -35,6 +37,7 @@ function Header() {
                             <li className="px-2">
                                 <Link
                                     className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                                    to="/account"
                                 >Account</Link>
                             </li>
                             <li className="px-2">
