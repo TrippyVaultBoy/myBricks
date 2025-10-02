@@ -3,34 +3,23 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 
+import { useMyBricksContext } from "./ContextProvider";
+
 function SignUp({ closeModal }) {
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const { handleSignUp } = useMyBricksContext();
 
-    const handleSignUp = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch("https://mybricks.dev/user", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ username, email, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error("Invalid sign up credentials");
-            }
-
+    const handleSignUpModal = async (username, email, password, e) => {
+        const result = await handleSignUp(username, email, password, e);
+        if (result.success) {
             closeModal();
-        } catch (error) {
-            console.error(error);
-            alert("Sign up failed");
+        } else {
+            console.log(result.message);
         }
-    }
+    };
 
     const handleEyeToggle = () => {
         setShowPassword(prev => !prev);
@@ -40,7 +29,7 @@ function SignUp({ closeModal }) {
         <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
             <form
                 className="flex flex-col bg-white p-6 rounded-4xl max-w-md w-full border border-[var(--color-bricksTeal)]"
-                onSubmit={handleSignUp}
+                onSubmit={(e) => handleSignUpModal(username, email, password, e)}
             >
                 <h1 className="text-[var(--color-bricksNavy)] text-xl font-bold text-center p-5">Sign Up</h1>
                 
@@ -86,8 +75,8 @@ function SignUp({ closeModal }) {
                 
                 <button
                     type="button"
-                    onClick={closeModal}
                     className="bg-[var(--color-bricksTeal)] text-[var(--color-bricksNavy)] rounded-4xl mb-4 p-2 text-center hover:shadow-lg hover:cursor-pointer"
+                    onClick={closeModal}
                 >
                     Close
                 </button>

@@ -3,43 +3,14 @@ import { useState } from 'react';
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 
-function Login({ closeModal, onLogin }) {
+import { useMyBricksContext } from './ContextProvider';
+
+function Login({ closeModal }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch("https://mybricks.dev/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error("Invalid login credentials");
-            }
-
-            const data = await response.json();
-            const token = data.token;
-
-            if (rememberMe) {
-                localStorage.setItem("jwtToken", token);
-            } else {
-                sessionStorage.setItem("jwtToken", token);
-            }
-            if (onLogin) onLogin();
-            closeModal();
-        } catch (error) {
-            console.error(error);
-            alert("Login failed")
-        }
-    }
+    const { handleLogin } = useMyBricksContext();
 
     const handleEyeToggle = () => {
         setShowPassword(prev => !prev);
@@ -48,12 +19,21 @@ function Login({ closeModal, onLogin }) {
     const handleRememberMe = () => {
         setRememberMe(prev => !prev);
     }
+
+    const handleLoginModal = async (email, password, rememberMe, e) => {
+        const result = await handleLogin(email, password, rememberMe, e);
+        if (result.success) {
+            closeModal();
+        } else {
+            console.log(result.message);
+        }
+    };
     
     return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
         <form
             className="flex flex-col bg-white p-6 rounded-4xl max-w-md w-full border border-[var(--color-bricksTeal)]"
-            onSubmit={handleLogin}
+            onSubmit={(e) => handleLoginModal(email, password, rememberMe, e)}
         >
             <h1 className="text-[var(--color-bricksNavy)] text-xl font-bold text-center p-5">Login</h1>
             
@@ -100,8 +80,8 @@ function Login({ closeModal, onLogin }) {
             
             <button
                 type="button"
-                onClick={closeModal}
                 className="bg-[var(--color-bricksTeal)] text-[var(--color-bricksNavy)] rounded-4xl mb-4 p-2 text-center hover:shadow-lg hover:cursor-pointer"
+                onClick={closeModal}
             >
                 Close
             </button>

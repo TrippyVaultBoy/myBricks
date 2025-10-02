@@ -1,31 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Login from "./Login";
 import SignUp from "./SignUp";
+import { useMyBricksContext } from './ContextProvider';
 
 function Header() {
+    const { isLoggedIn, handleLogout } = useMyBricksContext();
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        const token = localStorage.getItem("jwtToken");
-        if (token) setIsLoggedIn(true);
-    }, []);
-
-    const handleLogout = () => {
-        localStorage.removeItem("jwtToken");
-        setIsLoggedIn(false);
-    }
-
-    const toggleLoginModal = () => {
-        setIsLoginModalOpen(!isLoginModalOpen);
-    }
-
-    const toggleSignUpModal = () => {
-        setIsSignUpModalOpen(!isSignUpModalOpen);
-    }
     
     return (
         <div className="flex-none w-full max-w-screen-xl bg-[var(--color-bricksNavy)] flex justify-between mx-auto items-center rounded-b-3xl p-5">
@@ -36,36 +19,47 @@ function Header() {
             <nav>
                 <ul className="flex items-center text-[var(--color-bricksTeal)]">
                     <li className="px-2">
-                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer">Browse</Link>
+                        <Link
+                            className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                        >Browse</Link>
                     </li>
                     
                     <li className="px-2">
-                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer">Collection</Link>
+                        <Link
+                            className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                        >Collection</Link>
                     </li>
                     
                     {isLoggedIn ? (
                         <>
                             <li className="px-2">
-                                <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer">Account</Link>
+                                <Link
+                                    className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                                >Account</Link>
                             </li>
                             <li className="px-2">
-                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200" onClick={handleLogout}>Log Out</button>
+                                <button
+                                    className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200"
+                                    onClick={handleLogout}
+                                >Log Out</button>
                             </li>
                         </>
                     ) : (
                         <>
                             <li className="px-2">
-                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer" onClick={toggleSignUpModal}>Sign Up</button>
+                                <button
+                                    className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                                    onClick={() => {setIsSignUpModalOpen(!isSignUpModalOpen)}}
+                                >Sign Up</button>
                             </li>
                             <li className="px-2">
-                                <button className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer" onClick={toggleLoginModal}>Login</button>
+                                <button
+                                    className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer"
+                                    onClick={() => {setIsLoginModalOpen(!isLoginModalOpen)}}
+                                >Login</button>
                             </li>
                         </>
                     )}
-                    
-                    <li className="px-2">
-                        <Link className="px-3 py-2 rounded-3xl hover:bg-[var(--color-bricksTeal)] hover:text-[var(--color-bricksNavy)] transition-colors duration-200 hover:cursor-pointer">Light</Link>
-                    </li>
                 </ul>
             </nav>
 
