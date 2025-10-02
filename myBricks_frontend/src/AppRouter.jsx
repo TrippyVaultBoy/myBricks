@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router-dom";
 
 import PrivateRoutes from "./PrivateRoutes.jsx";
 
-import HomePage from "./HomePage.jsx";
-import LoginPage from "./LoginPage.jsx";
-import CollectionPage from "./CollectionPage.jsx";
-import AccountPage from "./AccountPage.jsx";
-import BrowsePage from "./BrowsePage.jsx";
+import HomePage from "./components/HomePage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import CollectionPage from "./components/CollectionPage.jsx";
+import AccountPage from "./components/AccountPage.jsx";
+import BrowsePage from "./components/BrowsePage.jsx";
 
 const AppRouter = () => {
   return (
