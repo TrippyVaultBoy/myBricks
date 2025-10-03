@@ -16,6 +16,8 @@
     --spacing: 0.25rem;
     --breakpoint-xl: 80rem;
     --container-md: 28rem;
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
@@ -35,6 +37,7 @@
     --color-bricksNavy: #00003c;
     --color-bricksTeal: #1dd2af;
     --color-bricksWhite: #fefcf2;
+    --color-bricksRed: #d00415;
   }
 }
 @layer base {
@@ -246,11 +249,17 @@
   .table {
     display: table;
   }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
   .h-48 {
     height: calc(var(--spacing) * 48);
   }
   .h-50 {
     height: calc(var(--spacing) * 50);
+  }
+  .h-100 {
+    height: calc(var(--spacing) * 100);
   }
   .h-full {
     height: 100%;
@@ -258,8 +267,14 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
+  }
   .w-80 {
     width: calc(var(--spacing) * 80);
+  }
+  .w-100 {
+    width: calc(var(--spacing) * 100);
   }
   .w-full {
     width: 100%;
@@ -315,6 +330,9 @@
   .justify-center {
     justify-content: center;
   }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
@@ -345,6 +363,14 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-1 {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
   .border-\[var\(--color-bricksTeal\)\] {
     border-color: var(--color-bricksTeal);
   }
@@ -352,6 +378,15 @@
     background-color: var(--color-bricksNavy);
   }
   .bg-\[var\(--color-bricksTeal\)\] {
+    background-color: var(--color-bricksTeal);
+  }
+  .bg-bricksNavy {
+    background-color: var(--color-bricksNavy);
+  }
+  .bg-bricksRed {
+    background-color: var(--color-bricksRed);
+  }
+  .bg-bricksTeal {
     background-color: var(--color-bricksTeal);
   }
   .bg-gray-200 {
@@ -362,6 +397,9 @@
   }
   .object-contain {
     object-fit: contain;
+  }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -397,6 +435,10 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
@@ -412,6 +454,18 @@
     color: var(--color-bricksTeal);
   }
   .text-\[var\(--color-bricksWhite\)\] {
+    color: var(--color-bricksWhite);
+  }
+  .text-bricksNavy {
+    color: var(--color-bricksNavy);
+  }
+  .text-bricksRed {
+    color: var(--color-bricksRed);
+  }
+  .text-bricksTeal {
+    color: var(--color-bricksTeal);
+  }
+  .text-bricksWhite {
     color: var(--color-bricksWhite);
   }
   .underline {
@@ -468,10 +522,38 @@
       }
     }
   }
+  .hover\:bg-bricksNavy {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-bricksNavy);
+      }
+    }
+  }
+  .hover\:bg-bricksTeal {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-bricksTeal);
+      }
+    }
+  }
   .hover\:text-\[var\(--color-bricksNavy\)\] {
     &:hover {
       @media (hover: hover) {
         color: var(--color-bricksNavy);
+      }
+    }
+  }
+  .hover\:text-bricksNavy {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-bricksNavy);
+      }
+    }
+  }
+  .hover\:text-bricksTeal {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-bricksTeal);
       }
     }
   }
