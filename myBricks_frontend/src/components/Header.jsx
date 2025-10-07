@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { ToyBrick } from "lucide-react";
+
 import Login from "./Login";
 import SignUp from "./SignUp";
 import { useMyBricksContext } from './ContextProvider';
@@ -13,10 +15,7 @@ function Header() {
     return (
         <div className="flex-none w-full max-w-screen-xl bg-bricksNavy flex justify-between mx-auto items-center rounded-b-3xl p-5">
             {/* Logo */}
-            <Link
-                className="text-2xl font-bold text-bricksTeal"
-                to="/"
-            >myBricks</Link>
+            <Link className="flex text-2xl items-center font-bold text-bricksTeal" to="/"><ToyBrick className="mr-1"/>myBricks</Link>
 
             {/* Navigation */}
             <nav>
